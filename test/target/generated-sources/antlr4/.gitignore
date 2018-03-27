@@ -1,4 +1,4 @@
-/Hello.tokens
+#/Hello.tokens
 /HelloBaseListener.java
 /HelloBaseVisitor.java
 /HelloLexer.java
