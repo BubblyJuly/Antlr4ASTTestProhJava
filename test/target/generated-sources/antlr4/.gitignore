@@ -1,8 +1,8 @@
-#/Hello.tokens
+#/Hello.tokens#
 /HelloBaseListener.java
-/HelloBaseVisitor.java
+#/HelloBaseVisitor.java#
 /HelloLexer.java
-/HelloLexer.tokens
-/HelloListener.java
+#/HelloLexer.tokens
+#/HelloListener.java#
 /HelloParser.java
-/HelloVisitor.java
+#/HelloVisitor.java
