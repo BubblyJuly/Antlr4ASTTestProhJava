@@ -1,9 +1,9 @@
 
-public class BuildASTVisitor extends HelloBaseVisitor {
+public class BuildASTVisitor extends HelloBaseVisitor<ExpressionNode> 
 	{
 	    public ExpressionNode VisitCompileUnit(HelloParser.CompileUnitContext context)
 	    {
-	        return (ExpressionNode) visit(context.expr());
+	        return visit(context.expr());
 	    }
 
 	    public ExpressionNode VisitNumberExpr(HelloParser.NumberExprContext context)
@@ -14,13 +14,13 @@ public class BuildASTVisitor extends HelloBaseVisitor {
 	    }
 	    //    return new NumberNode
 	    //    {
-	    //        Value = double.Parse(, NumberStyles.AllowDecimalPoint | NumberStyles.AllowExponent);
+	    //        Value = double.Parse(context.value.getText(), NumberStyles.AllowDecimalPoint | NumberStyles.AllowExponent);
 	    //    };
 	    //}
 
 	    public ExpressionNode VisitParensExpr(HelloParser.ParensExprContext context)
 	    {
-	        return (ExpressionNode) visit(context.expr());
+	        return visit(context.expr());
 	    }
 
 	    public ExpressionNode VisitInfixExpr(HelloParser.InfixExprContext context)
@@ -49,8 +49,8 @@ public class BuildASTVisitor extends HelloBaseVisitor {
 	                throw new UnsupportedOperationException();
 	        }
 
-	        node.Left = (ExpressionNode) visit(context.left);
-	        node.Right = (ExpressionNode) visit(context.right);
+	        node.Left =  visit(context.left);
+	        node.Right =  visit(context.right);
 
 	        return node;
 	    }
@@ -60,11 +60,11 @@ public class BuildASTVisitor extends HelloBaseVisitor {
 	        switch (context.op.getType())
 	        {
 	            case HelloLexer.OP_ADD:
-	                return (ExpressionNode) visit(context.expr());
+	                return  visit(context.expr());
 
 	            case HelloLexer.OP_SUB:
 	            	NegateNode negNod = new NegateNode();
-	            	negNod.InnerNode = (ExpressionNode) visit(context.expr());
+	            	negNod.InnerNode =  visit(context.expr());
 	                //return new NegateNode
 	                //{
 	                //    InnerNode = visit(context.expr()) 
